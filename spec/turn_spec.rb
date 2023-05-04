@@ -15,11 +15,17 @@ RSpec.describe Turn do
     end
 
     it 'has attributes' do
-      expect(@turn.guess_string).to eq("Juneau")
       expect(@turn.card).to be_a Card
+      expect(@turn.guess).to eq("Juneau")
     end
   end
 
   describe 'it can function' do
+    it 'can check a guess' do 
+      @turn.correct?
+      expect(@turn.correct?).to be(true)
+      @turn.feedback
+      expect(@turn.feedback).to eq("Correct!")
+    end
   end
 end
