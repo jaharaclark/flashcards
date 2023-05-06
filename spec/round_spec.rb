@@ -24,7 +24,12 @@ RSpec.describe Round do
   describe 'it can play turns' do
     it 'flashes a card and returns the correct answer' do
       @round.current_card
-      expect(@round.current_card).to be(@card_1)
+      expect(@round.current_card).to eq(@card_1)
+      new_turn = @round.take_turn("Juneau")
+      expect(new_turn[0].class).to be(Turn)
+      expect(@round.turns).to eq(new_turn)
+      expect(@round.number_correct).to eq(1)
+      # binding.pry
     end
   end
 end
