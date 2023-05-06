@@ -1,10 +1,10 @@
 
 class Round
-  attr_reader :deck_of_cards,
-              :turns,
-              :current_card,
-              :number_correct,
-              :card_count
+  attr_accessor :deck_of_cards,
+                :turns,
+                :current_card,
+                :number_correct,
+                :card_count
 
   def initialize(deck_of_cards, turns)
     @deck_of_cards = deck_of_cards
@@ -15,7 +15,9 @@ class Round
   end
 
   def current_card
-   @current_card = @deck_of_cards.cards[@card_count]
+   turn_card = @deck_of_cards.cards.first
+   @deck_of_cards.cards.delete(0)
+   return turn_card
   end
 
   def take_turn(player_guess)
@@ -26,5 +28,6 @@ class Round
       end
     attempt.feedback
     @turns << attempt
+    
   end
 end
