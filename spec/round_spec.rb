@@ -27,7 +27,10 @@ RSpec.describe Round do
       expect(@round.current_card).to eq(@card_1)
       new_turn = @round.take_turn("Juneau")
       expect(new_turn.class).to be(Turn)
+      expect(@round.turns).to eq([new_turn])
       expect(@round.number_correct).to eq(1)
+      expect(@round.current_card).to eq(@card_1)
+
     end
   end
 end
